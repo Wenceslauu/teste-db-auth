@@ -1,11 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../../prisma/client";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
+import { prisma } from "../../../prisma/client";
+import { User } from "@prisma/client";
 
 type Data = {
-  name: string;
+  userPosts: User | null;
 };
 
 export default async function handler(
@@ -16,6 +17,7 @@ export default async function handler(
 
   const userPosts = await prisma.user.findUnique({
     where: {
+      // @ts-ignore:next-line
       email: session?.user?.email,
     },
     include: {
@@ -23,5 +25,5 @@ export default async function handler(
     },
   });
 
-  res.status(200).json(userPosts);
+  res.status(200).json({ userPosts });
 }

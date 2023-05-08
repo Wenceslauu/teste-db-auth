@@ -4,20 +4,22 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
 
-  if (session) {
+  if (session && !loading) {
     return (
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
         <header className="flex justify-center items-center gap-2">
-          <div
-            style={{
-              backgroundImage: `url('${session.user.image}')`,
-              backgroundPosition: "center",
-            }}
-            className="rounded-full w-16 h-16"></div>
+          <img
+            // @ts-ignore:next-line
+            src={session.user.image}
+            referrerPolicy="no-referrer"
+            className="rounded-full w-20 h-20"
+          />
           <h1 className="text-4xl font-bold text-center">
+            {/* @ts-ignore:next-line */}
             <p>{session.user.name}</p>
           </h1>
         </header>
@@ -29,6 +31,17 @@ export default function Home() {
           }}>
           Sign out
         </a>
+      </main>
+    );
+  } else if (loading) {
+    return (
+      <main
+        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
+        <header>
+          <h1 className="text-4xl font-bold text-center">
+            <p>Loading...</p>
+          </h1>
+        </header>
       </main>
     );
   } else {
