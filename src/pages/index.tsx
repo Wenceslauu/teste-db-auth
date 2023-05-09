@@ -7,6 +7,8 @@ export default function Home() {
   const { data: session, status } = useSession();
   const loading = status === "loading";
 
+  console.log(session)
+
   if (session && !loading) {
     return (
       <main
@@ -21,6 +23,7 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-center">
             {/* @ts-ignore:next-line */}
             <p>{session.user.name}</p>
+            <p>Teste de branch</p>
           </h1>
         </header>
         <a
