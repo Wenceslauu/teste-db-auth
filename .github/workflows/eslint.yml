@@ -33,4 +33,4 @@ jobs:
         with:
           eslint: true
           prettier: true
-          continue-on-error: false
+          continue_on_error: false
