@@ -38,6 +38,9 @@
     "ts-node": "^10.9.1"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": "prettier --write"
+    "*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
