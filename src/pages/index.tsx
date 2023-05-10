@@ -7,12 +7,13 @@ export default function Home() {
   const { data: session, status } = useSession();
   const loading = status === "loading";
 
-  console.log(session)
+  console.log(session);
 
   if (session && !loading) {
     return (
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
+        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      >
         <header className="flex justify-center items-center gap-2">
           <img
             // @ts-ignore:next-line
@@ -31,7 +32,8 @@ export default function Home() {
           onClick={(e) => {
             e.preventDefault();
             signOut();
-          }}>
+          }}
+        >
           Sign out
         </a>
       </main>
@@ -39,7 +41,8 @@ export default function Home() {
   } else if (loading) {
     return (
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
+        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      >
         <header>
           <h1 className="text-4xl font-bold text-center">
             <p>Loading...</p>
@@ -50,7 +53,8 @@ export default function Home() {
   } else {
     return (
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
+        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      >
         <header>
           <h1 className="text-4xl font-bold text-center">
             <p>Sign in to get started</p>
@@ -61,7 +65,8 @@ export default function Home() {
           onClick={(e) => {
             e.preventDefault();
             signIn();
-          }}>
+          }}
+        >
           Sign in
         </a>
       </main>
