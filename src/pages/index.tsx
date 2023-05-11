@@ -7,7 +7,7 @@ export default function Home() {
   const { data: session, status } = useSession();
   const loading = status === "loading";
 
-  // Tomate
+  //                                           Tomate
 
   if (session && !loading) {
     return (
