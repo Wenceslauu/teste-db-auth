@@ -1,6 +1,6 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "arrow-body-style": "error"
+    "no-var": "error"
   }
 }

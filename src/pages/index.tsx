@@ -7,7 +7,7 @@ export default function Home() {
   const { data: session, status } = useSession();
   const loading = status === "loading";
 
-  const teste = () => console.log("teste");
+  let teste = "teste";
 
   if (session && !loading) {
     return (
